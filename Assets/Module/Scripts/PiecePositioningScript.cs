@@ -185,7 +185,7 @@ public class PiecePositioningScript : MonoBehaviour
                 yield return "sendtochaterror Invalid command.";
                 yield break;
             }
-            int tileIndex = _manager.Tiles.IndexOf(x => x.Coordinate.X == commands[2][0] - 'a' && (x.Coordinate.Y - (x.Coordinate.X >= 3 ? x.Coordinate.X - 2 : 0)) == commands[2][1] - '1');
+            int tileIndex = _manager.Tiles.IndexOf(x => !x.IsBox && x.Coordinate.X == commands[2][0] - 'a' && (x.Coordinate.Y - (x.Coordinate.X >= 3 ? x.Coordinate.X - 2 : 0)) == commands[2][1] - '1');
             if (tileIndex < 0)
             {
                 yield return "sendtochaterror Invalid command.";
@@ -248,7 +248,7 @@ public class PiecePositioningScript : MonoBehaviour
                 yield return "sendtochaterror Invalid command.";
                 yield break;
             }
-            int pieceIndex = _manager.Pieces.IndexOf(x => x.Target != null && x.Target.Coordinate.X == commands[1][0] - 'a' && (x.Target.Coordinate.Y - (x.Target.Coordinate.X >= 3 ? x.Target.Coordinate.X - 2 : 0)) == commands[1][1] - '1');
+            int pieceIndex = _manager.Pieces.IndexOf(x => x.Target != null && !x.Target.IsBox && x.Target.Coordinate.X == commands[1][0] - 'a' && (x.Target.Coordinate.Y - (x.Target.Coordinate.X >= 3 ? x.Target.Coordinate.X - 2 : 0)) == commands[1][1] - '1');
             if (pieceIndex < 0)
             {
                 yield return "sendtochaterror Invalid command.";
